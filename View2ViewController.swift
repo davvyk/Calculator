@@ -27,6 +27,7 @@ class View2ViewController: UIViewController {
     var toPassAns3:String!
     var toPassAns4:String!
     var toPassAns5:String!
+    let animateDuration = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         ansStore1.alpha = 0
@@ -76,24 +77,31 @@ class View2ViewController: UIViewController {
     
     }
     override func viewDidAppear(animated: Bool) {
-        UIView.animateWithDuration(1, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: nil, animations: {
-            self.ansStore1.frame = CGRect(x: 32, y: 104 + 500, width: 104, height: 32)
+        
+        UIView.animateWithDuration(1, delay: 0.5, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: nil, animations: {
+            self.ansStore1.frame = CGRect(x: 32, y: 104 + 1000, width: 104, height: 32)
             self.ansStore1.alpha = 1
             }, completion: nil)
         
-        UIView.animateWithDuration(1, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: nil, animations: {
-            self.ansStore2.frame = CGRect(x: 32, y: 104 + 500, width: 104, height: 32)
+        UIView.animateWithDuration(1, delay: 0.4, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: nil, animations: {
+            self.ansStore2.frame = CGRect(x: 32, y: 104 + 1000, width: 104, height: 32)
             self.ansStore2.alpha = 1
             }, completion: nil)
         
-        UIView.animateWithDuration(1, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: nil, animations: {
-            self.ansStore3.frame = CGRect(x: 32, y: 104 - 500, width: 104, height: 32)
+        UIView.animateWithDuration(1, delay: 0.3, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: nil, animations: {
+            self.ansStore3.frame = CGRect(x: 32, y: 104 + 1000, width: 104, height: 32)
             self.ansStore3.alpha = 1
             }, completion: nil)
         
-        UIView.animateWithDuration(1, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: nil, animations: {
-            self.ansStore4.frame = CGRect(x: 32, y: 104 - 500, width: 104, height: 32)
+        UIView.animateWithDuration(1, delay: 0.2, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: nil, animations: {
+            self.ansStore4.frame = CGRect(x: 32, y: 104 + 1000, width: 104, height: 32)
             self.ansStore4.alpha = 1
+            }, completion: nil)
+        
+        
+        UIView.animateWithDuration(1, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: nil, animations: {
+            self.ansStore5.frame = CGRect(x: 32, y: 104 + 1000, width: 104, height: 32)
+            self.ansStore5.alpha = 1
             }, completion: nil)
     }
     override func didReceiveMemoryWarning() {
