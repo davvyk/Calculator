@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var equalsButton: UIButton!
     @IBOutlet weak var button9: UIButton!
+   
     
     @IBAction func ExitSegway (sender: UIStoryboardSegue){}
     
@@ -24,21 +25,16 @@ class ViewController: UIViewController {
     var shadowOpacity : Float = 0.3
     var shadowHeight = -5
     let calculations = Calcultions()
-    
+    let view2 = View2ViewController()
    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         
         
-        // Do any additional setup after loading the view, 
         
- /////THIS SETS UP TOP SHADOWS, NOT SURE ON THEM
-        
-//     
-//        topBox.layer.shadowOffset = CGSize(width: 0, height: 2)
-//        topBox.layer.shadowRadius = 0.5
-//        topBox.layer.shadowOpacity = 0.3
+  //This sets up shadows
         
         button8.layer.shadowOffset = CGSize(width: 0, height: shadowHeight)
         button8.layer.shadowRadius = shadowRadius
@@ -49,6 +45,7 @@ class ViewController: UIViewController {
         button7.layer.shadowOffset = CGSize(width: 0, height: shadowHeight)
         button7.layer.shadowRadius = shadowRadius
         button7.layer.shadowOpacity = shadowOpacity
+    
         
         buttonDiv.layer.shadowOffset = CGSize(width: 0, height: shadowHeight)
         buttonDiv.layer.shadowRadius = shadowRadius
@@ -70,9 +67,29 @@ class ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "segueTest") {
+            var svc = segue.destinationViewController as View2ViewController;
+            
+         
+            svc.toPassAns1 = String(format: calculations.storeAns1, "%.02f")
+            svc.toPassAns2 = calculations.storeAns2
+            svc.toPassAns3 = calculations.storeAns3
+            svc.toPassAns4 = calculations.storeAns4
+            svc.toPassAns5 = calculations.storeAns5
+            
+            
+        }
+    }
+    
+    
 
+    
+    
     @IBAction func pressZero() {
         
         
@@ -155,6 +172,7 @@ class ViewController: UIViewController {
     }
     
 }
+    
     @IBAction func pressFive() {
         switch calculations.stringToComplete {
         case 1 : calculations.number1 += "5"
@@ -290,11 +308,18 @@ class ViewController: UIViewController {
                 calculations.answer =    calculations.multiply(calculations.number1, b: calculations.number2)
                 answerLabel.text = calculations.answer
                 
+                
                 println("number1is \(calculations.number1)")
                 println("number2is \(calculations.number2)")
                 
                 calculations.equalsAlreadyPressed = true
+                calculations.storeAnswers()
                 
+                
+               
+                
+            
+            
             case 1 :   calculations.answer =    calculations.divide(calculations.number1, b: calculations.number2)
             answerLabel.text = calculations.answer
             
@@ -302,6 +327,7 @@ class ViewController: UIViewController {
             println("number2is \(calculations.number2)")
             
             calculations.equalsAlreadyPressed = true
+                calculations.storeAnswers()
                 
                 
             case 2 : calculations.answer =    calculations.minus(calculations.number1, b: calculations.number2)
@@ -311,6 +337,7 @@ class ViewController: UIViewController {
             println("number2is \(calculations.number2)")
             
             calculations.equalsAlreadyPressed = true
+                calculations.storeAnswers()
                 
             case 3: calculations.answer =    calculations.add(calculations.number1, b: calculations.number2)
             answerLabel.text = calculations.answer
@@ -319,6 +346,7 @@ class ViewController: UIViewController {
             println("number2is \(calculations.number2)")
             
             calculations.equalsAlreadyPressed = true
+            calculations.storeAnswers()
                 
                 
                 
@@ -338,25 +366,30 @@ class ViewController: UIViewController {
                 
                 println("number1is \(calculations.number1)")
                 println("number2is \(calculations.number2)")
+                calculations.storeAnswers()
+                
                 
             case 1 : calculations.answer =    calculations.divide(calculations.answer, b: calculations.number2)
             answerLabel.text = calculations.answer
             
             println("number1is \(calculations.number1)")
             println("number2is \(calculations.number2)")
-                
+                calculations.storeAnswers()
+           
                 
             case 2 : calculations.answer =    calculations.minus(calculations.answer, b: calculations.number2)
             answerLabel.text = calculations.answer
             
             println("number1is \(calculations.number1)")
             println("number2is \(calculations.number2)")
+                calculations.storeAnswers()
                 
             case 3 : calculations.answer =    calculations.add(calculations.answer, b: calculations.number2)
             answerLabel.text = calculations.answer
             
             println("number1is \(calculations.number1)")
             println("number2is \(calculations.number2)")
+                calculations.storeAnswers()
                 
                 
                 
@@ -372,18 +405,39 @@ class ViewController: UIViewController {
 
  
     @IBAction func pressC() {
-        
-        calculations.number1 = ""
-        calculations.number2 = ""
-        calculations.answer = ""
-        calculations.equalsAlreadyPressed = false
-        calculations.stringToComplete = 1
+
+        calculations.clearState()
         answerLabel.text = "0"
-        calculations.dotNotFound = true
+        
         
     }
     
-}
+    @IBAction func swipe(sender: UISwipeGestureRecognizer) {
+        calculations.toggleMinus()
+        switch calculations.stringToComplete {
+        case 1 : answerLabel.text = calculations.number1
+        case 2: answerLabel.text = calculations.number2
+        default: break
+        }
+        println("swipde")
+    }
+    @IBAction func swipeLeft(sender: UISwipeGestureRecognizer) {
+        calculations.toggleMinus()
+        switch calculations.stringToComplete {
+        case 1 : answerLabel.text = calculations.number1
+        case 2: answerLabel.text = calculations.number2
+        default: break
+        
+    }
+    }
+    @IBAction func pressMinus(sender: UIButton) {
+      
+    }
+    }
+    
+
+
+
 
 
 
