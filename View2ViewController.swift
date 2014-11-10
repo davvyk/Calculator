@@ -13,10 +13,10 @@ class View2ViewController: UIViewController {
     @IBOutlet weak var ansStore1: UILabel!
     @IBOutlet weak var ansStore2: UILabel!
     @IBOutlet weak var ansStore3: UILabel!
-    
     @IBOutlet weak var ansStore4: UILabel!
     @IBOutlet weak var ansStore5: UILabel!
     
+    @IBOutlet weak var BGBox: UILabel!
     
     
     
