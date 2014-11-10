@@ -30,6 +30,10 @@ class View2ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ansStore1.alpha = 0
+        ansStore2.alpha = 0
+        ansStore3.alpha = 0
+        ansStore4.alpha = 0
+        ansStore5.alpha = 0
         
         
         
@@ -39,13 +43,57 @@ class View2ViewController: UIViewController {
         ansStore3.text = toPassAns3
         ansStore4.text = toPassAns4
         ansStore5.text = toPassAns5
+        
+    // set up shadows
+        BGBox.layer.shadowOffset = CGSize(width: 0, height: -20)
+        BGBox.layer.shadowRadius = -5
+        BGBox.layer.shadowOpacity = 0.3
+        
+        ansStore1.layer.shadowOffset = CGSize(width: 0, height: 20)
+        ansStore1.layer.shadowRadius = -5
+        ansStore1.layer.shadowOpacity = 0.3
+        
+        ansStore2.layer.shadowOffset = CGSize(width: 0, height: 20)
+        ansStore2.layer.shadowRadius = -5
+        ansStore2.layer.shadowOpacity = 0.3
+        
+        ansStore3.layer.shadowOffset = CGSize(width: 0, height: 20)
+        ansStore3.layer.shadowRadius = -5
+        ansStore3.layer.shadowOpacity = 0.3
+        
+        ansStore4.layer.shadowOffset = CGSize(width: 0, height: 20)
+        ansStore4.layer.shadowRadius = -5
+        ansStore4.layer.shadowOpacity = 0.3
+        
+        ansStore5.layer.shadowOffset = CGSize(width: 0, height: 20)
+        ansStore5.layer.shadowRadius = -5
+        ansStore5.layer.shadowOpacity = 0.3
+        
+        
+        
 
         // Do any additional setup after loading the view.
+    
     }
     override func viewDidAppear(animated: Bool) {
         UIView.animateWithDuration(1, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: nil, animations: {
-            self.ansStore1.center = CGPoint(x:0 , y: 0)
+            self.ansStore1.frame = CGRect(x: 32, y: 104 + 500, width: 104, height: 32)
             self.ansStore1.alpha = 1
+            }, completion: nil)
+        
+        UIView.animateWithDuration(1, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: nil, animations: {
+            self.ansStore2.frame = CGRect(x: 32, y: 104 + 500, width: 104, height: 32)
+            self.ansStore2.alpha = 1
+            }, completion: nil)
+        
+        UIView.animateWithDuration(1, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: nil, animations: {
+            self.ansStore3.frame = CGRect(x: 32, y: 104 - 500, width: 104, height: 32)
+            self.ansStore3.alpha = 1
+            }, completion: nil)
+        
+        UIView.animateWithDuration(1, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: nil, animations: {
+            self.ansStore4.frame = CGRect(x: 32, y: 104 - 500, width: 104, height: 32)
+            self.ansStore4.alpha = 1
             }, completion: nil)
     }
     override func didReceiveMemoryWarning() {
@@ -59,7 +107,7 @@ class View2ViewController: UIViewController {
         
     }
 
-    // MARK: - Navigation
+    
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
